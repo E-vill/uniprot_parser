@@ -131,7 +131,7 @@ puts myprot.orthology.information
 # => return '-'
 
 ```
-For more examples please refers to the documentation or test case in [spec/](https://github.com/E-vill/uniprot_parser/spec/tree/master/spec) 
+For more examples please refers to the documentation or test case in [spec/](https://github.com/E-vill/uniprot_parser/blob/master/spec/uniprot_parser_spec.rb) 
 
 
 # License
