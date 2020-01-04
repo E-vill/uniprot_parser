@@ -1,6 +1,6 @@
 # uniprot-parser
 
-The ruby uniprot parser aims to help you to parse your uniprot txt files,
+This ruby parser aims to help you to parse your uniprot txt files,
  this gem is based on the [uniprot documentation](http://web.expasy.org/docs/userman.html)
 
 
@@ -15,7 +15,7 @@ list_of_all_protein_from_the_file = UniprotParser::parse('/path/to/UP000000.txt'
 
 ```
 
-To parse the file with a progress bar (please note that to setup the verbose option increase the treatment time) :
+To parse the file with a progress bar (please note that to setup the verbose option slightly increase the treatment time) :
 ```ruby
 require 'uniprot_parser'
 
@@ -131,9 +131,9 @@ puts myprot.orthology.information
 # => return '-'
 
 ```
-For more examples please refers to the documentation or test case in [spec/](https://github.com/E-vill/uniprot_parser/blob/master/spec/uniprot_parser_spec.rb) 
+For more examples please refer to the documentation or test case in [spec/](https://github.com/E-vill/uniprot_parser/blob/master/spec/uniprot_parser_spec.rb) 
 
 
 # License
-As recommended by my research organisation ([CNRS](http://www.cnrs.fr/en/aboutcnrs/overview.htm)) guidelines this code source is available as open source under the terms of the [CeCILL-B License](http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.txt) (fully compatible with BSD license ).
+The code source is available as open source under the terms of the [CeCILL-B License](http://www.cecill.info/licences/Licence_CeCILL-B_V1-en.txt) (fully compatible with BSD license ).
 
