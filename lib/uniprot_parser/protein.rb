@@ -220,6 +220,14 @@ module UniprotParser
       @entry_version_number
     end
 
+    #return [Integer] the protein existence level (how trustable the protein is, coming from experimental evidence or prediction like homology)
+    def protein_existence
+      if @protein_existence.nil?
+        @protein_existence = (@pe_block.match /^PE\s+(\d):.*/)[1].to_i
+      end
+      @protein_existence
+    end
+
     #@return [Array<Go_term>] the list of GO term associated with the protein
     def go_term
       ret = Array.new
@@ -237,8 +245,10 @@ module UniprotParser
       ret = Array.new
       unless @gn_block.nil?
         @gn_block.split("\n").each do |l|
-          if(tmp = l.match(/GN\s+Name=([^;]+);\s+ORFNames=([^;]+);/))
-             ret << Gene.new(tmp[1],tmp[2])
+          #if(tmp = l.match(/GN\s+Name=([^;]+);\s+ORFNames=([^;]+);/))
+          if(tmp = l.match(/GN\s+Name=(\w+)\s*\S*;/)) #change regex so it collect only short gene name (not {ECO:0000255|HAMAP-Rule:MF_00445}, example with NU2C1_ORYSJ) and consider that ORFName are not always present (example with P53_HUMAN)
+            orf = (temp = l.match(/ORFNames=([^;]+);/))? temp[1] : "unknown"
+            ret << Gene.new(tmp[1],orf)
           end
         end
       end
